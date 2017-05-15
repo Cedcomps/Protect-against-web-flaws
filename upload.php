@@ -35,6 +35,40 @@ if (!$error) {
     }
 }
 
+$handle = fopen($nom, 'r');
+
+if ($handle) {
+
+    while (!feof($handle) AND $erreur == 0) {
+
+        $buffer = fgets($handle);
+
+        switch (true) {
+            case strstr($buffer,'<'):
+            $error = true;
+            break;
+
+            case strstr($buffer,'>'):
+            $erreur += 1;
+             break;
+
+            case strstr($buffer,';'):
+            $erreur += 1;
+            break;
+
+            case strstr($buffer,'&'):
+            $erreur += 1;
+             break;
+
+            case strstr($buffer,'?'):
+            $erreur += 1;
+            break;
+        }
+    }
+
+fclose($handle);
+
+
 else {
     
     // On supprime le fichier du serveur
