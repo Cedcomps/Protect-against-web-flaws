@@ -34,15 +34,12 @@ if (!$error) {
         }
     }
 }
-
+//Contenu d'un fichier photo ou audio
 $handle = fopen($nom, 'r');
-
 if ($handle) {
-
     while (!feof($handle) AND $erreur == 0) {
-
         $buffer = fgets($handle);
-
+        
         switch (true) {
             case strstr($buffer,'<'):
             $error = true;
@@ -65,10 +62,8 @@ if ($handle) {
             break;
         }
     }
-
 fclose($handle);
-
-
+//
 else {
     
     // On supprime le fichier du serveur
