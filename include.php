@@ -5,7 +5,6 @@ if (empty($page)) {
  // On limite l'inclusion aux fichiers.php en ajoutant dynamiquement l'extension
  // On supprime également d'éventuels espaces
  $page = trim($page.".php");
-
 }
 
 // On évite les caractères qui permettent de naviguer dans les répertoires
@@ -17,7 +16,6 @@ $page = str_replace("%","protect",$page);
 if (preg_match("admin",$page)) {
  echo "Vous n'avez pas accès à ce répertoire";
  }
-
 else {
 
     // On vérifie que la page est bien sur le serveur
@@ -28,5 +26,4 @@ else {
     else {
         echo "Page inexistante !";
     }
-
 ?>
